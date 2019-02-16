@@ -1,9 +1,15 @@
-
-body{
+body {
     width: 100%;
 }
 
 
-.content{
+.content {
     text-align: center;
+}
+
+#submit {
+    padding: 10px 30px;
+    background-color: red;
+    color: white;
+    border-radius: 5px 5px 5px 5px;
 }

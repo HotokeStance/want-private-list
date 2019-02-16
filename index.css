@@ -1,6 +1,6 @@
-
-body{
+body {
     width: 100%;
+    background-image: url("back-image.jpeg");
 }
 
 /*---------------------------ヘッダーの設定---------------------------*/
@@ -9,6 +9,9 @@ body{
     margin: 0 30px 0 30px;
 }
 
+ul a{
+    color: black;
+}
 .navbar-right {
     margin-right: 140px;
 }
@@ -18,32 +21,37 @@ body{
 }
 
 .current {
-    border-bottom: 3px solid rgb(145, 102, 255);
+    border-bottom: 4px solid black;
 }
 
 
 /*---------------------------りすとの設定---------------------------*/
 
-
-.which{
+.which {
     text-align: center;
+    color: black;
 }
 
-.box{
-    border: 3px solid black;
+.box {
+    border: 8px solid #8e430b;
     margin: 10px auto 0 auto;
     width: 90%;
     text-align: center;
+    background-color: green;
+    color: white;
 }
 
-.list{
+.list {
     display: inline-block;
     width: 200px;
-    border: 1px solid black;
+    border-bottom: 3px solid white;
     word-wrap: break-word;
+    font-weight: bold;
 }
 
-.fa-minus-circle{
+img{
+    width: 30px;
+}
+.fa-minus-circle {
     cursor: pointer;
-    
 }

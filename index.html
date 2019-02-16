@@ -14,8 +14,9 @@
 </head>
 <style>
     .navbar-toggler .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(75, 75, 75)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(0, 0, 0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
     }
+
 </style>
 
 <body>
@@ -57,7 +58,7 @@
             yaru.equalTo("rel_yaru", objectId).fetchAll().then(function(result) {
                 for (var i = 0; i <= result.length; i++) {
                     $("#list-ma").append(
-                        '<p><span class="list">' + result[i].yaru + '</span><i class="fa fa-minus-circle" aria-hidden="true" style="color:red" onclick=delete_task("' + result[i].objectId + '")></i></p>'
+                        '<p><span class="list">' + result[i].yaru + '</span><img src="poppy.png" onclick=delete_task("' + result[i].objectId + '")></p>'
                     );
                 }
             });
@@ -68,7 +69,7 @@
             yaru.equalTo("rel_yaru", objectId).fetchAll().then(function(result) {
                 for (var i = 0; i <= result.length; i++) {
                     $("#list-me").append(
-                        '<p><span class="list">' + result[i].yaru + '</span><i class="fa fa-minus-circle" aria-hidden="true" style="color:red" onclick=delete_task("' + result[i].objectId + '")></i></p>'
+                        '<p><span class="list">' + result[i].yaru + '</span><img src="poppy.png" onclick=delete_task("' + result[i].objectId + '")></p>'
                     );
                 }
             });
@@ -87,11 +88,12 @@
                 }
             });
         });
+
     </script>
     <div class="container-fluid" style="padding:0;">
         <nav class="navbar navbar-expand-md">
-            <a class="navbar-brand text-secondary ml-5" href="#">Want!</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand ml-5" style="color: black;" href="#">Want!</a>
+            <button class="navbar-toggler" style="color: white" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
             <div class="collapse navbar-collapse" id="navbarsExample04">
@@ -101,31 +103,31 @@
 
                 <ul class="navbar-nav navbar-right">
                     <li class="nav-item">
-                        <a class="nav-link text-secondary current" href="#">Home</a>
+                        <a class="nav-link current" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-secondary" href="add.html">Add</a>
+                        <a class="nav-link" href="add.html">Add</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-secondary" href="#">Contact</a>
+                        <a class="nav-link" href="#">Contact</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </div>
     <div class="which">
-        <label><input type="checkbox" name="check" value="ma" id="val">ま</label>
-        <label><input type="checkbox" name="check" value="me" id="val">め</label>
+        <label><input type="checkbox" name="check" value="ma" id="val">まさひろ</label>
+        <label><input type="checkbox" name="check" value="me" id="val">めぐみ</label>
     </div>
     <div class="box ma">
-        <p>ま</p>
+        <p>まさひろ</p>
         <div id="list-ma">
 
         </div>
     </div>
 
     <div class="box me">
-        <p>め</p>
+        <p>めぐみ</p>
         <div id="list-me">
 
         </div>
