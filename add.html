@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Want!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="add.css">
+    <!-- SDKの読み込み -->
+    <script type="text/javascript" src="ncmb.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<style>
+    .navbar-toggler .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(75, 75, 75)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    }
+</style>
+
+<body>
+    <script>
+        var api_key = "642c30ce4d2c57e51376a4c2e296140460f298c9f5dfb08a8680c5b8a49964c5";
+        var cli_key = "97b8b029ab8afd795823f37418bedc28c990c473c599880d2a99039d3d4140ee";
+        var ncmb = new NCMB(api_key, cli_key);
+
+        $(function() {
+            var objectId;
+            $("#submit").click(function() {
+                if ($('input[name=q1]:checked').val() === 'ま') {
+                    objectId = "4yGZdQrBmmV8j0VB";
+                    add_ma();
+
+                } else if ($('input[name=q1]:checked').val() === 'め') {
+                    objectId = "CW24rzzUKGBqCZRk";
+                    add_me();
+                } else {
+                    alert("どっちか選んで！");
+                }
+            });
+
+            //ま　追加
+            function add_ma() {
+                add();
+            }
+
+            function add_me() {
+                add();
+            }
+
+            function add() {
+                //データ更新処理
+                for (var i = 0; i < $('[name=task_content]').length; i++) {
+                    var yaru_list = ncmb.DataStore("Yaru");
+                    var yaru = new yaru_list();
+                    var val = $('[name=task_content]')[i].value;
+                    console.log(val);
+                    if (val != "") {
+                        yaru
+                            .set("yaru", val)
+                            .set("rel_yaru", objectId)
+                            .save()
+                            .then(function(result) {
+                                window.location.href = "index.html";
+                            })
+                            .catch(function(err) {
+                                // エラー処理
+                                console.log("reload_minusで失敗" + err)
+                            });
+                    }
+                }
+            }
+        });
+    </script>
+    <div class="container-fluid" style="padding:0;">
+        <nav class="navbar navbar-expand-md">
+            <a class="navbar-brand text-secondary ml-5" href="#">Want!</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            <div class="collapse navbar-collapse" id="navbarsExample04">
+                <ul class="navbar-nav mr-auto">
+
+                </ul>
+
+                <ul class="navbar-nav navbar-right">
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary current" href="add.html">Add</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="content">
+        <p>どっち？<br>
+            <input type="radio" name="q1" value="ま"> ま
+            <input type="radio" name="q1" value="め"> め
+        </p>
+        <h4>やること！</h4>
+        <p class="plus_btn"><span>＋枠を増やす</span></p>
+        <div class="update">
+            <p><input type="text" class="task" id="task1" name="task_content" placeholder="やること"></p>
+        </div>
+        <a id="submit" href="#">登録</a>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
+    <script>
+        $(function() {
+            var i = 2;
+            var moji = "task";
+            $('.plus_btn').click(function() {
+                $('.update').append('<p><input type="text" id="task' + i + '"name="task_content"></p>');
+                i++;
+            });
+        });
+    </script>
+</body>
+
+</html>
