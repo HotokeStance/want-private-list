@@ -11,6 +11,7 @@ body {
 
 ul a{
     color: black;
+    width: 170%;
 }
 .navbar-right {
     margin-right: 140px;
